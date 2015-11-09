@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="todo.png" type="image/x-icon"/>
+	<link rel="stylesheet" href="register_login.css" type="text/css"/>
+	<title>添加书籍</title>
+
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		body{
+			font-size:20px;
+			font-family: "微软雅黑",Arial;
+			color: #666;
+			background: #fff;
+			text-align: center;
+		}
+
+		a{
+			text-decoration: none;
+			color: #666;
+		}
+
+		a:hover{
+			text-decoration: underline;
+			color: #869fba;
+		}
+
+		/*顶部*/
+		#top{
+			width: 100%;
+			background:#F7F7F7;
+			border-bottom: 1px solid #EEE;
+			height: 45px;
+			position: absolute;
+            top: 75px;
+            margin: auto auto;
+		}
+
+		#top_bar{
+			line-height: 45px;
+			width: 80%;
+			margin: auto auto;
+            text-align: center;
+		}
+
+		#top_bar > ul > li{
+			float: left;
+			margin-right: 30px;
+			position: relative;
+
+		}
+
+		div.top_bar_dropdown{
+			position: absolute;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			z-index:2;
+			display: none;
+			top: 27px;
+		}
+
+
+        div.top_bar_dropdown ul li a{
+            font-size: 15px;
+        }
+
+		#show_dropdown{
+			width: 90px;
+			text-align: center;
+			left: 0px;
+            top: 45px;
+		}
+
+		#add_dropdown{
+			width: 90px;
+			text-align: center;
+			left: 0px;
+            top: 45px;
+		}
+
+
+		/*内容*/
+		#content{
+            text-align: center;
+            margin: 200px auto 100px;
+
+		}
+
+        #search{
+            float: right;
+            height: 30px;
+            margin: 10px 10px 0px 10px;
+
+        }
+
+        #show{
+            height: 600px;
+            overflow: scroll;
+        }
+
+        .tab{
+            margin: 0 auto;
+        }
+
+        hr{
+            color: yellow;
+        }
+
+		.form_input{
+            width: 250px;
+            margin: 10px 0;
+            height: 25px;
+            border-radius: 2px;
+        }
+
+		#submit-btn{
+            width: 50px;
+        }
+
+        #submit-btn:hover{
+            cursor: pointer;
+        }
+
+	</style>
+	<script>
+		function showOrHide(id, dp){
+			document.getElementById(id).style.display=dp;
+		}
+	</script>
+
+</head>
+
+<body>
+	<!--顶部-->
+	<div id="top">
+		<div id="top_bar">
+			<ul>
+				<li onmouseover="showOrHide('show_dropdown','block')" onmouseout="showOrHide('show_dropdown','none')">
+					<a href="/">SHOW</a>
+					<div id="show_dropdown" class="top_bar_dropdown">
+					<ul>
+						<li><a href="/">BOOK</a></li>
+						<li><a href="/showauthor">AUTHOR</a></li>
+					</ul>
+				</div>
+				</li>
+                <li><b>|</b></li>
+				<li onmouseover="showOrHide('add_dropdown','block')" onmouseout="showOrHide('add_dropdown','none')">
+                    <a href="/addbookpre">ADD</a>
+					<div id="add_dropdown" class="top_bar_dropdown">
+					<ul>
+						<li><a href="/addbookpre">BOOK</a></li>
+						<li><a href="/addauthorpre">AUTHOR</a></li>
+					</ul>
+					</div>
+				</li>
+			</ul>
+    	</div>
+	</div>
+
+	<div id="content">
+        <div id="add">
+			<form method="get" action="/addbook" id="add-form">
+				<div class="input_box">
+					  <input id="isbn" tabindex="1"  type="text" name="isbn" placeholder="ISBN" class="form_input"/>
+				</div>
+				<div class="input_box">
+					  <input id="title" tabindex="2"  type="text" name="title" placeholder="Title" class="form_input"/>
+				</div>
+				<div class="input_box">
+					  <input id="author" tabindex="3"  type="text" name="author" placeholder="Author" class="form_input"/>
+				</div>
+				<div class="input_box">
+					  <input id="publisher" tabindex="4"  type="text" name="publisher" placeholder="Publisher" class="form_input"/>
+				</div>
+                <div class="input_box">
+					  <input id="publishdate" tabindex="5"  type="text" name="publishdate" placeholder="Publisher Date" class="form_input"/>
+				</div>
+                <div class="input_box">
+					  <input id="price" tabindex="6"  type="text" name="price" placeholder="Price" class="form_input"/>
+				</div>
+				<div id="submit_btn_box">
+                      <input style="width:60px;" type="submit" tabindex="7" name="submit" value="添加书籍" id="submit-btn"/>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
